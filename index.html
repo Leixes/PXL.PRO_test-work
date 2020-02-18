@@ -6,30 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="https://ruseller.com/lessons/les1878/Demo/jquery.onepage-scroll.js"></script>
-    <script>
-        $( ".main").onepage_scroll({
-
-            sectionContainer: "section",
-            easing: "ease",
-            animationTime: 1000,
-            pagination: true,
-            updateURL: false
-        });
-    </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/jquery.onepage-scroll.min.js"></script>
+    <link href="font/oswald.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
+<div class="wrapper">
         <nav class="left-navigation-column">
             <div class="logo">
                 <img src="img/logo.png" alt="logo.png">
             </div>
             <ul>
-                <li><h3><a href="#">
+                <li><h3><a href="">
                     Проекты
                 </a></h3></li>
-                <li><h3><a href="#">
+                <li><h3><a class="a__about" href="#about">
                     О нас
                 </a></h3></li>
                 <li><h3><a href="#">
@@ -40,40 +33,120 @@
                 </a></h3></li>
             </ul>
         </nav>
-        <div class="main">
-            <section class="page-one __move">
-                <h1>о нас</h1>
-                <div class="quote">
-                    <h3>«Счастлив тот, кто счастлив у себя дома»</h3>
-                <h4>— Лев Толстой</h4>
-                </div>
-                <div class="paragraf">
-                    <p>Наше название (греч. Neapolis) говорит само за себя: 
-                        мы создаем НОВЫЙ ГОРОД. <br>
-                        Наш дом – это источник обретения внутреннего баланса, это всегда место покоя, укромный уголок, 
-                        куда мы стремимся. <br>
-                        Очень важно грамотно подойти к обустройству своего жилища, ведь именно гармония с собой и своим окружением определяет уровень счастья.</p>
-                </div>
-                <p>►</p><p>смотреть видео</p>
-                <button>scroll </button>
-                <div>
-                    <h4>100 +</h4>
-                <h4>проектов</h4>
-                </div>
-                <div>
-                    <h4>8 лет</h4>
-                <h4>на рынке</h4>
-                </div>
-                <div>
-                    <h4>9 чел.</h4>
-                <h4>в команде</h4>
-                </div>
-            </section>
+    <div class="main">
+            <div class="page_main">
+            </div>
+            <div class="page_about">
+                <section class="page-one __move">
+                        <div class="typewriter">
+                            <h1 id="swap1" class="title swap">О нас</h1>
+                        </div>
+                    <div class="col-2 transition__top">
+                        <div class="quote">
+                            <h3>«Счастлив тот, кто счастлив у себя дома»</h3>
+                            <h4>— Лев Толстой</h4>
+                        </div>
+                        <div class="paragraf">
+                            <p>Наше название (греч. Neapolis) говорит само за себя: 
+                            мы создаем НОВЫЙ ГОРОД. <br><br>
+                            Наш дом – это источник обретения внутреннего баланса, это всегда место покоя, укромный уголок, 
+                            куда мы стремимся. <br><br>
+                            Очень важно грамотно подойти к обустройству своего жилища, ведь именно гармония с собой и своим окружением определяет уровень счастья.</p>
+                        </div>
+                    </div>
+                    <div class="play transition__top">
+                        <p class="play_icon"> <a href="#">►</a> </p><p>смотреть видео</p>
+                    </div>
+                    <div class="col-2 __bottom">
+                        <div id="swap2" class="swap scroll">
+                            scroll
+                        </div>
+                        <div class="col-3">
+                            <div class="__group">
+                                <h4>100 +</h4>
+                                <h5 id="swap3" class="swap">проектов</h5>
+                            </div>
+                            <div class="__group">
+                                <h4>8 лет</h4>
+                                <h5 id="swap4" class="swap">на рынке</h5>
+                            </div>
+                            <div class="__group">
+                                <h4>9 чел.</h4>
+                                <h5 id="swap5" class="swap">в команде</h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </section>
+            </div>
             <section class="page-two __move">
-                
+
             </section>
         </div>
     </div>
-   
+</div>
+     <script type="text/javascript">
+        $('.main').onepage_scroll({
+            sectionContainer: "section",
+            easing: "ease",
+            animationTime: 1000,
+            pagination: false,
+            updateURL: false,
+            loop: false,                    
+            keyboard: true,                  
+            responsiveFallback: false,      
+            direction: "vertical"
+        });
+
+        $.fn.animate_Text = function() {
+                var string = this.text();
+                return this.each(function(){
+                var $this = $(this);
+                $this.html(string.replace(/./g, '<span class="new">$&</span>'));
+                $this.find('span.new').each(function(i, el){
+                    setTimeout(function(){ $(el).addClass('div_opacity'); }, 80 * i);
+                });
+                });
+
+        };
+
+        $('.scroll').click(function(){
+            $(".main").moveDown();
+        });
+        
+        $('.a__about').click(function(){
+            $('.paga_main').fadeOut(300);
+            $('.page_about').fadeIn(1000);
+            $('.page-two').fadeIn(1000);
+            $('.__bottom').animate(
+                {
+                    paddingTop:"40"
+            }, 
+            1400);
+            $('.transition__top').animate(
+                {
+                    paddingTop:"0"
+                    
+            }, 
+            1400);
+                $('#swap2').show();
+                $('#swap2').animate_Text();
+
+                $('#swap1').show();
+                $('#swap1').animate_Text();
+
+                $('#swap3').show();
+                $('#swap3').animate_Text();
+
+                $('#swap4').show();
+                $('#swap4').animate_Text();
+
+                $('#swap5').show();
+                $('#swap5').animate_Text();
+
+        });
+
+       
+    </script>
 </body>
 </html>
