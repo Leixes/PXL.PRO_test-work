@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    height: 100%;
+    width: 100%;
+    min-height: 720px;
+    min-width: 1280px;
+}
+.page-one{
+    background-image: url("../../PXL.PRO_test-work/img/page-one_background.png");
+    
+}
+.left-navigation-column{
+    position: absolute;
+    display: flex; 
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    width: 240px;
+    left: 0;
+    top: 0;
+    background-color: #070500;
+    opacity: 0.3;
+}
+.main{
+    position: static;
+    
+    top: 0;
+    right: 0;
+}
+.page-one{
+    
+}
+.__move{
+    padding-left: 240px;
+}
+a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+ul{
+    list-style: none;
+}
+.logo{
+    top: 0;
+    padding: 5%;
+}
