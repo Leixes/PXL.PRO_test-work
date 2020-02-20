@@ -85,10 +85,84 @@ function showSlide(n){
     $('.minImg').hide();
     slides[0].style.display = 'block';
 
+    minImg[0].style.display = 'block';
     minImg[1].style.display = 'block';
     minImg[2].style.display = 'block';
-    minImg[3].style.display = 'block';
 }
 
 var SlideIndex = 1;
 showSlide(SlideIndex);
+
+var target;
+function actMinImg(n){
+    if(n == 0){
+        return;
+    }
+    var i = 0;
+    var minImg = document.getElementsByClassName('minImg');
+    target = n;
+
+    for(; n > 0; --n){
+        --n;
+        minImg[n].classList.add('opacity');
+        moveMinImg(minImg[n]);
+    }
+}
+function moveMinImg(block){
+    var coord = 0;
+    var time = setInterval(moveImg, 10);
+    function moveImg(){
+        if(coord == 100){
+            clearInterval(time);
+            minImgHide();
+        }else{
+            coord++;
+            block.style.paddingRight = coord + 'px';
+        }
+    }
+}
+function minImgHide(){
+    var i;
+    var minImg = document.getElementsByClassName('minImg');
+    for(i = 0; i < target; i++){
+        minImg[i].style.display = 'none';
+    }
+    var n = target;
+    if(n < minImg.length){
+        n++;
+        minImg[n].style.display = 'block';
+    }
+    if(n < minImg.length){
+        n++;
+        minImg[n].style.display = 'block';
+    }
+}
+
+// var length = minImg.length;
+//     var block = minImg[i];
+//     block.classList.add('opacity');
+    // var coord = 0;
+    // var time = setInterval(moveImg, 10);
+    // function moveImg(){
+    //     block.style.display = 'block';
+    //     if(coord == 100){
+    //         clearInterval(time);
+    //         for(i = 0; i < n; i++){
+    //             minImg[i].style.display = 'none';
+    //         }
+    //         target++;
+    //         if(target < length){
+    //             console.log(target);
+    //             minImg[target].style.display = 'block';
+    //         }
+    //         target++;
+    //         if(target < length){
+    //             console.log(target);
+    //             minImg[target].style.display = 'block';
+    //         }
+            
+    //     }else{
+    //         coord++;
+    //         block.style.paddingRight = coord + 'px';
+    //     }
+    // }

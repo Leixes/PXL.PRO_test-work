@@ -240,8 +240,20 @@ li{
     position: absolute;
     bottom: 0;
     right: 150px;
+    z-index: 10;
 }
 .minImg{
     width: 238px;
     height: 356.5px;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    opacity: 1;
+    z-index: 1;
+}
+.minImg.opacity{
+    opacity: 0;
+    display: none;
 }
