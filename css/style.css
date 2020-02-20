@@ -8,7 +8,7 @@ html{
 body{
     position: relative;
     width: 1920px;
-    height: 1010px;
+    height: 1080px;
     background-color: #070500;
     font-family: 'Oswald';
     font-style: normal;
@@ -29,7 +29,7 @@ body{
     left: 0;
     top: 0;
     background-color: rgba(0,0,0,.4);
-    height: 1010px;
+    height: 1080px;
 }
 .main{
     width: 1920px;
@@ -42,6 +42,7 @@ body{
     height: 100%;
     background-image: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url("../../PXL.PRO_test-work/img/page-one_background.png");
     background-repeat: no-repeat;
+    background-color: #FFFFFF;
     color: #FFFFFF;
     width: 1920px;
     height: 1080px;
@@ -130,6 +131,8 @@ body{
     font-size: 24px;
     line-height: 32px;
     margin-top: 40px;
+    position: relative;
+    bottom: 0;
 }
 .__group{
     display: flex;
@@ -171,6 +174,7 @@ li{
 }
 .logo{
     top: 0;
+    margin-top: 50px;
     padding: 5%;
 }
 
@@ -188,7 +192,56 @@ li{
 .page-two{
     display: none;
     background: radial-gradient(40.62% 76.77% at 50% 50%, #FFFFFF 21.32%, #E7E7E7 100%);
-    color: #FFFFFF;
+    color: #070500;
     width: 1920px;
     height: 1080px;
+}
+.shown{
+    width: 100%;
+    min-height: 800px;
+    padding-left: 240px;
+    position: relative;
+}
+.Slide{
+    position: absolute;
+    display: block;
+}
+.Slide h2{
+    font-weight: normal;
+    font-size: 56px;
+    line-height: 64px;
+    padding-left: 0px;
+    margin-bottom: 170px;
+}
+.Slide h3{
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 20px;
+}
+.Slide p{
+    width: 480px;
+    font-family: Merriweather;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 180px;
+}
+.slideImg{
+    position: absolute;
+    padding-left: 200px;
+    padding-top: 43px;
+}
+.miniatures{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 150px;
+}
+.minImg{
+    width: 238px;
+    height: 356.5px;
 }
