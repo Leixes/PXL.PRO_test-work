@@ -59,7 +59,9 @@
                         <p class="play_icon"> <a href="#">►</a> </p><p>смотреть видео</p>
                     </div>
                     <div class="col-2 __bottom">
-                        <div id="swap2" class="swap scroll" onclick="$('.main').moveDown();">
+                        <div id="swap2" class="swap scroll" onclick="$('.main').moveDown(function(){
+                            
+                        });">
                             scroll
                         </div>
                         <div class="col-3">
@@ -210,7 +212,7 @@
                     </div>
                     
                 </div>
-                <div class="scroll">
+                <div class="scroll" onclick="scrollActMinImg();">
                     scroll
                 </div>
                 <div class="miniatures">

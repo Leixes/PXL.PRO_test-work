@@ -1,8 +1,8 @@
 $('.main').onepage_scroll(
     { //
             sectionContainer: "section",
-            easing: "ease",
-            animationTime: 1000,
+            easing: "ease-in",
+            animationTime: 900,
             pagination: false,
             updateURL: false,
             loop: false,                    
@@ -28,12 +28,6 @@ $('.main').onepage_scroll(
         };
 ///
 
-
-        // $('.scroll').click(function()
-        // {
-        //     $(".main").moveDown();
-        // });
-        
         $('.a__about').click(function()
         {
             $('.paga_main').fadeOut(300);
@@ -93,7 +87,25 @@ function showSlide(n){
 var SlideIndex = 1;
 showSlide(SlideIndex);
 
-var target;
+var target = 0;
+
+// window.addEventListener('scroll', function(){
+
+// });
+
+var pageTwo = document.getElementsByClassName('page-two');
+pageTwo[0].addEventListener('wheel', scrollTwo);
+function scrollTwo(event){
+    event.preventDefault();
+    if(event.deltaY > 0){
+        actMinImg(target);
+        target++;
+    }
+}
+function scrollActMinImg(){
+    actMinImg(target);
+    target++;
+}
 function actMinImg(n){
     if(n == 0){
         return;
@@ -104,7 +116,10 @@ function actMinImg(n){
 
     for(; n > 0; --n){
         --n;
-        minImg[n].classList.add('opacity');
+        var i;
+        for(i = 0; i < target; i++){
+            minImg[i].classList.add('opacity');
+        }
         moveMinImg(minImg[n]);
     }
 }
@@ -128,12 +143,12 @@ function minImgHide(){
         minImg[i].style.display = 'none';
     }
     var n = target;
+    n++;
     if(n < minImg.length){
-        n++;
         minImg[n].style.display = 'block';
     }
+    n++;
     if(n < minImg.length){
-        n++;
         minImg[n].style.display = 'block';
     }
 }

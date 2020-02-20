@@ -20,7 +20,7 @@ body{
 }
 .left-navigation-column{
     position: absolute;
-    z-index: 1;
+    z-index: 100;
     display: flex; 
     flex-direction: column;
     text-align: center;
@@ -34,6 +34,8 @@ body{
 .main{
     width: 1920px;
     height: 1080px;
+    position: relative;
+    z-index: 1;
 }
 .page_about{
     display: none;
@@ -195,6 +197,8 @@ li{
     color: #070500;
     width: 1920px;
     height: 1080px;
+    position: relative;
+    z-index: 20;
 }
 .shown{
     width: 100%;
@@ -205,6 +209,12 @@ li{
 .Slide{
     position: absolute;
     display: block;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    opacity: 1;
 }
 .Slide h2{
     font-weight: normal;
@@ -253,7 +263,7 @@ li{
     opacity: 1;
     z-index: 1;
 }
-.minImg.opacity{
+.opacity{
     opacity: 0;
     display: none;
 }
