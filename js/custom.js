@@ -75,7 +75,7 @@ function showSlide(n){
     var slides = document.getElementsByClassName('Slide');
     var minImg = document.getElementsByClassName('minImg');
 
-    $('.Slide').hide();
+    // $('.Slide').hide();
     $('.minImg').hide();
     slides[0].style.display = 'block';
 
@@ -83,15 +83,18 @@ function showSlide(n){
     minImg[1].style.display = 'block';
     minImg[2].style.display = 'block';
 }
-
+function slideAnimate(){
+    var slides = document.getElementsByClassName('Slide');
+    var n = target;
+    scaleMinImg(n);
+    slides[n].style.opacity = '0';
+    slides[n + 1].style.opacity = '1';
+    slides[n + 1].style.display = 'block';
+}
 var SlideIndex = 1;
 showSlide(SlideIndex);
 
 var target = 0;
-
-// window.addEventListener('scroll', function(){
-
-// });
 
 var pageTwo = document.getElementsByClassName('page-two');
 pageTwo[0].addEventListener('wheel', scrollTwo);
@@ -101,18 +104,64 @@ function scrollTwo(event){
         actMinImg(target);
         target++;
     }
+    if(event.deltaY < 0){
+        // if(target == 0){
+        //     return;
+        // }
+        var slides = document.getElementsByClassName('Slide');
+        slides[target].style.opacity = '0';
+        console.log(target);
+
+        target--;
+        actMinImg(target);
+    }
+}
+function scaleMinImg(n){
+    var minImg = document.getElementsByClassName('minImg');
+    var block = minImg[n];
+    var time = setInterval(scalemoveImg, 2);
+    var h = 356;
+    var w = 238;
+    var pb = 0;
+    var pr = 0;
+    function scalemoveImg(){
+        if(h >= 960 && w >= 640){
+            clearInterval(time);
+            minImg[n].style.display = 'none';
+        }else{
+            if(h < 960){
+                h = h + 6;
+            }
+            if(w < 640){
+                w = w + 4;
+            }
+            if(pb < 600){
+                pb = pb + 6;
+            }
+            if(pr < 200){
+                pr = pr + 2;
+            }
+            block.style.width = w + 'px';
+            block.style.height = h + 'px';
+            block.style.paddingBottom = pb + 'px';
+            block.style.paddingRight = pr + 'px';
+        }
+    }
 }
 function scrollActMinImg(){
+    slideAnimate();
     actMinImg(target);
     target++;
 }
 function actMinImg(n){
-    if(n == 0){
-        return;
-    }
+    scaleMinImg(n);
+    // if(n == 0){
+    //     return;
+    // }
     var i = 0;
     var minImg = document.getElementsByClassName('minImg');
     target = n;
+    slideAnimate();
 
     for(; n > 0; --n){
         --n;
@@ -120,10 +169,10 @@ function actMinImg(n){
         for(i = 0; i < target; i++){
             minImg[i].classList.add('opacity');
         }
-        moveMinImg(minImg[n]);
+        moveUpMinImg(minImg[n]);
     }
 }
-function moveMinImg(block){
+function moveUpMinImg(block){
     var coord = 0;
     var time = setInterval(moveImg, 10);
     function moveImg(){
@@ -152,32 +201,3 @@ function minImgHide(){
         minImg[n].style.display = 'block';
     }
 }
-
-// var length = minImg.length;
-//     var block = minImg[i];
-//     block.classList.add('opacity');
-    // var coord = 0;
-    // var time = setInterval(moveImg, 10);
-    // function moveImg(){
-    //     block.style.display = 'block';
-    //     if(coord == 100){
-    //         clearInterval(time);
-    //         for(i = 0; i < n; i++){
-    //             minImg[i].style.display = 'none';
-    //         }
-    //         target++;
-    //         if(target < length){
-    //             console.log(target);
-    //             minImg[target].style.display = 'block';
-    //         }
-    //         target++;
-    //         if(target < length){
-    //             console.log(target);
-    //             minImg[target].style.display = 'block';
-    //         }
-            
-    //     }else{
-    //         coord++;
-    //         block.style.paddingRight = coord + 'px';
-    //     }
-    // }

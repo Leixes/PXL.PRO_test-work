@@ -214,6 +214,9 @@ li{
     -ms-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
     transition: opacity .5s ease-in-out;
+    opacity: 0;
+}
+.Slide:first-child{
     opacity: 1;
 }
 .Slide h2{
@@ -242,12 +245,20 @@ li{
     position: absolute;
     padding-left: 200px;
     padding-top: 43px;
+    /* -webkit-transition: opacity .28s ease-in-out;
+    -moz-transition: opacity .28s ease-in-out;
+    -ms-transition: opacity .28s ease-in-out;
+    -o-transition: opacity .28s ease-in-out;
+    transition: opacity .28s ease-in-out; */
+    opacity: 0;
 }
 .miniatures{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     position: absolute;
+    height: 356px;
+    width: 715px;
     bottom: 0;
     right: 150px;
     z-index: 10;
